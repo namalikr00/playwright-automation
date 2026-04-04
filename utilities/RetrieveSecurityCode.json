@@ -1,0 +1,40 @@
+import { test, expect, Page } from '@playwright/test';
+
+export class RetrieveSecurityCode {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async extractOTP() {
+    const otpUrl = 'https://outlook.live.com/';
+    const emailSearchRegex = /Your secure access code is (\d+)/;
+    let otpCode = null;
+
+    await this.page.goto(otpUrl);
+    await this.page.bringToFront();
+    await this.page.setViewportSize({ width: 1920, height: 1080 });
+
+    const emailList = this.page.locator("div[role='region'] div[role='listbox']").first();
+    await expect(emailList).toBeVisible();
+
+    const emailElements = await this.page.locator("div[role='listbox'] div[role='option']").all();
+
+    for (const emailElement of emailElements) {
+      const emailText = await emailElement.textContent();
+      if (emailText) {
+        const match = emailText.match(emailSearchRegex);
+        if (match && match[1]) {
+          otpCode = parseInt(match[1], 10);
+          console.log(`Extracted OTP: ${otpCode}`);
+          break; // Exit the loop once a match is found
+        }
+      }
+    }
+
+    if (otpCode === null) {
+      throw new Error('Could not find the OTP email.');
+    }
+
+    return otpCode;
+  }
+}
