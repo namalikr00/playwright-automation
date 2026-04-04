@@ -1,0 +1,26 @@
+{
+  "name": "playwright-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "regression": "npx playwright test",
+    "webTests": "npx playwright test --grep @Web",
+    "APITests": "npx playwright test --grep @API"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.3.1",
+    "allure-commandline": "^2.36.0",
+    "allure-playwright": "^3.4.1",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "mailslurp-client": "^16.0.0"
+  }
+}
