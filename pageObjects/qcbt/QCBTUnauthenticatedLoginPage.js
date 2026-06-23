@@ -23,9 +23,9 @@ export class QCBTUnauthenticatedLoginPage {
         this.customerNameText = page.locator('.customer-name');
     }
 
-    async goToUnauthenticatedLandingPage(cbtCommercialurl) {
-        await this.page.goto(cbtCommercialurl, { timeout: 60000 });
-        await this.page.waitForURL(cbtCommercialurl);
+    async goToUnauthenticatedLandingPage(qcbtCommercialurl) {
+        await this.page.goto(qcbtCommercialurl, { timeout: 60000 });
+        await this.page.waitForURL(qcbtCommercialurl);
     }
 
     async verifyUnautheticatedLandingPageElements() {
