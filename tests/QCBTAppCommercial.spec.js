@@ -18,7 +18,7 @@ test.describe('QCBT - Commercial tests', () => {
         qcbtauthenticatedLandingPage = new QCBTAuthenticatedLandingPage(page, context);
 
         // Perform the login steps once before each test
-        await qcbtunauthenticatedLoginPage.goToUnauthenticatedLandingPage(dataSet.cbtCommercialurl);
+        await qcbtunauthenticatedLoginPage.goToUnauthenticatedLandingPage(dataSet.qcbtCommercialurl);
         await qcbtunauthenticatedLoginPage.logintoApplication(dataSet.loginID, dataSet.password);
         await qcbtmfaPage.verifyMfaPageElements();
         await qcbtmfaPage.selectEmailAuthentication();
